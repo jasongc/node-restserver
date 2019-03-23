@@ -20,5 +20,5 @@ let urlDB;
 // } else {
 //     urlDB = 'mongodb+srv://jasongc:Udemy123+@cluster0-pdxxo.mongodb.net/test'
 // }
-urlDB = 'mongodb+srv://jasongc:Udemy123+@cluster0-pdxxo.mongodb.net/sealifDB'
+urlDB = process.env.NODE_URI;
 process.env.URLDB = urlDB;
