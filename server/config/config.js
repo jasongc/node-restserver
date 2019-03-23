@@ -20,5 +20,5 @@ let urlDB;
 // } else {
 //     urlDB = 'mongodb+srv://jasongc:Udemy123+@cluster0-pdxxo.mongodb.net/test'
 // }
-urlDB = process.env.NODE_URI;
+urlDB = process.env.MONGO_URI;
 process.env.URLDB = urlDB;
