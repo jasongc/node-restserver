@@ -3,11 +3,12 @@ const bcrypt = require('bcryptjs');
 const _ = require('underscore');
 
 const User = require('../models/usuario');
+const { verificaToken, verificaAdmin_Role } = require('../config/middlewares/authentication');
 
 const app = express();
 
 
-app.get('/usuario', (req, res) => {
+app.get('/usuario', verificaToken, (req, res) => {
     //paginacion!!!!!
 
     let desde = Number(req.query.desde) || 0;
@@ -34,7 +35,7 @@ app.get('/usuario', (req, res) => {
         })
 });
 
-app.post('/usuario', (req, res) => {
+app.post('/usuario', [verificaToken, verificaAdmin_Role], (req, res) => {
     let salt = bcrypt.genSaltSync(10);
 
     let body = req.body;
@@ -64,7 +65,7 @@ app.post('/usuario', (req, res) => {
 
 });
 
-app.put('/usuario/:id', (req, res) => {
+app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], (req, res) => {
 
     let id = req.params.id;
     let body = _.pick(req.body, ['name', 'email', 'img', 'isDeleted']);
@@ -84,7 +85,7 @@ app.put('/usuario/:id', (req, res) => {
     })
 });
 
-app.delete('/usuario/:id', (req, res) => {
+app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], (req, res) => {
     let id = req.params.id;
     let objUser = {
         isDeleted: true,

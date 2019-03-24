@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-app.use(require('./controllers/usuario'));
-
+//total de controladores
+app.use(require('./controllers/index'));
 
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err, res) => {
     if (err) throw err;

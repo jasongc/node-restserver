@@ -44,6 +44,7 @@ let userSchema = new Schema({
     }
 });
 
+//Cuando se intente mostrar un json se dispara
 userSchema.methods.toJSON = function() {
     let userData = this;
     let userObject = userData.toObject();
