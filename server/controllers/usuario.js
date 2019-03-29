@@ -70,7 +70,7 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['name', 'email', 'img', 'isDeleted']);
 
-    User.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, userDB) => {
+    User.findByIdAndUpdate(id, body, { new: true, runValidators: false }, (err, userDB) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
