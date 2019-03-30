@@ -15,7 +15,7 @@ app.get('/GetAllProducts', verificaToken, (req, res) => {
     let regExp = new RegExp(termino, 'i'); //es igual que el contains() de c#
     let desde = Number(req.query.desde) || 0;
     let limite = Number(req.query.limite) || 5;
-    Product.find({ isDeleted: false, name: regExp }, 'name isDeleted categoryId _id priceSale description SKU')
+    Product.find({ isDeleted: false, name: regExp }, 'name isDeleted categoryId _id priceSale description SKU img')
         .skip(desde)
         .limit(limite)
         .exec((err, products) => {

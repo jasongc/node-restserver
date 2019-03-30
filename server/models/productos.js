@@ -9,6 +9,7 @@ var productoSchema = new Schema({
     description: { type: String, required: false },
     isDeleted: { type: Boolean, required: true, default: false },
     categoryId: { type: String, required: true },
+    img: { type: String, required: false },
     SKU: { type: String, required: true },
     //Auditoría
     insertDate: { type: Date, default: new Date() },
